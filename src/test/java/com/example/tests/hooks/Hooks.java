@@ -1,8 +1,11 @@
 package com.example.tests.hooks;
 
 import com.example.framework.core.DriverManager;
+import com.example.framework.core.PlaywrightManager;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 
 /**
@@ -16,6 +19,11 @@ public class Hooks {
         this.driverManager = driverManager;
     }
 
+    @BeforeAll
+    public static void beforeAll() {
+        PlaywrightManager.start();
+    }
+
     @Before
     public void beforeScenario(Scenario scenario) {
         driverManager.start(scenario.getName());
@@ -24,5 +32,10 @@ public class Hooks {
     @After
     public void afterScenario(Scenario scenario) {
         driverManager.stop(scenario);
+    }
+
+    @AfterAll
+    public static void afterAll() {
+        PlaywrightManager.stop();
     }
 }

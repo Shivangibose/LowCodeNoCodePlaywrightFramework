@@ -2,6 +2,7 @@ package com.example.framework.config;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 import java.util.Properties;
 
 public final class Config {
@@ -30,18 +31,32 @@ public final class Config {
         return Double.parseDouble(get("timeout.ms", "30000"));
     }
 
-    private static String get(String key, String defaultValue) {
+    public static String value(String key) {
+        return optional(key).orElseThrow(() ->
+                new IllegalArgumentException("No configuration value found for key '" + key + "'."));
+    }
+
+    public static Optional<String> optional(String key) {
         String systemValue = System.getProperty(key);
         if (systemValue != null && !systemValue.isBlank()) {
-            return systemValue;
+            return Optional.of(systemValue);
         }
 
         String envValue = System.getenv(toEnvKey(key));
         if (envValue != null && !envValue.isBlank()) {
-            return envValue;
+            return Optional.of(envValue);
         }
 
-        return PROPERTIES.getProperty(key, defaultValue);
+        String propertyValue = PROPERTIES.getProperty(key);
+        if (propertyValue != null && !propertyValue.isBlank()) {
+            return Optional.of(propertyValue);
+        }
+
+        return Optional.empty();
+    }
+
+    private static String get(String key, String defaultValue) {
+        return optional(key).orElse(defaultValue);
     }
 
     private static Properties loadProperties() {

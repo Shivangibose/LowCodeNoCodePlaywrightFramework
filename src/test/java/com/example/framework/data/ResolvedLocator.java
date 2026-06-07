@@ -2,6 +2,7 @@ package com.example.framework.data;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.options.AriaRole;
 
 import java.util.Locale;
@@ -42,12 +43,36 @@ public record ResolvedLocator(
         };
     }
 
+    /**
+     * Builds the actual Playwright Locator inside the active iframe scope.
+     */
+    public Locator locator(FrameLocator frameLocator) {
+        return switch (type) {
+            case CSS -> frameLocator.locator(selector);
+            case XPATH, TEXT -> frameLocator.locator(playwrightSelector());
+            case TESTID -> frameLocator.getByTestId(selector);
+            case ROLE -> roleLocator(frameLocator);
+        };
+    }
+
     private Locator roleLocator(Page page) {
-        AriaRole ariaRole = AriaRole.valueOf(selector.toUpperCase(Locale.ROOT).replace("-", "_"));
+        AriaRole ariaRole = ariaRole();
         if (name == null || name.isBlank()) {
             return page.getByRole(ariaRole);
         }
         return page.getByRole(ariaRole, new Page.GetByRoleOptions().setName(name));
+    }
+
+    private Locator roleLocator(FrameLocator frameLocator) {
+        AriaRole ariaRole = ariaRole();
+        if (name == null || name.isBlank()) {
+            return frameLocator.getByRole(ariaRole);
+        }
+        return frameLocator.getByRole(ariaRole, new FrameLocator.GetByRoleOptions().setName(name));
+    }
+
+    private AriaRole ariaRole() {
+        return AriaRole.valueOf(selector.toUpperCase(Locale.ROOT).replace("-", "_"));
     }
 
     private String roleSelector() {

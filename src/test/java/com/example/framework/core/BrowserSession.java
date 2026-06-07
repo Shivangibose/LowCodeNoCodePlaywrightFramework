@@ -9,7 +9,7 @@ import com.microsoft.playwright.Tracing;
 import java.nio.file.Path;
 
 /**
- * Holds the Playwright objects created for one Cucumber scenario.
+ * Holds the Playwright browser objects created for one Cucumber scenario.
  */
 public class BrowserSession implements AutoCloseable {
     private final Playwright playwright;
@@ -77,7 +77,8 @@ public class BrowserSession implements AutoCloseable {
     }
 
     /**
-     * Closes Playwright resources in the reverse order in which they were created.
+     * Closes scenario resources in the reverse order in which they were created.
+     * The Playwright instance is owned by PlaywrightManager for the whole test run.
      */
     @Override
     public void close() {
@@ -89,7 +90,6 @@ public class BrowserSession implements AutoCloseable {
         closeQuietly(page);
         closeQuietly(browserContext);
         closeQuietly(browser);
-        closeQuietly(playwright);
     }
 
     private static void closeQuietly(AutoCloseable closeable) {

@@ -2,6 +2,7 @@ package com.example.framework.data;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.FrameLocator;
 
 import java.util.Map;
 import java.util.StringJoiner;
@@ -51,6 +52,10 @@ public final class LocatorResolver {
 
     public Locator locator(Page page, String logicalName) {
         return resolve(logicalName).locator(page);
+    }
+
+    public Locator locator(FrameLocator frameLocator, String logicalName) {
+        return resolve(logicalName).locator(frameLocator);
     }
 
     private void validate(String logicalName, LocatorDefinition definition) {

@@ -12,15 +12,15 @@ import com.microsoft.playwright.Playwright;
  */
 public class PlaywrightFactory {
     public BrowserSession createSession() {
-        Playwright playwright = null;
+        Playwright playwright = PlaywrightManager.playwright();
         Browser browser = null;
         BrowserContext browserContext = null;
         Page page = null;
 
         try {
-            playwright = Playwright.create();
             browser = launchBrowser(playwright);
             browserContext = browser.newContext();
+            browserContext.setDefaultTimeout(Config.timeoutMs());
             page = browserContext.newPage();
             page.setDefaultTimeout(Config.timeoutMs());
 

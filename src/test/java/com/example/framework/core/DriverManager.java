@@ -1,6 +1,8 @@
 package com.example.framework.core;
 
+import com.example.framework.config.Config;
 import com.example.framework.reporting.ArtifactPathResolver;
+import com.microsoft.playwright.ConsoleMessage;
 import com.microsoft.playwright.Page;
 import io.cucumber.java.Scenario;
 
@@ -20,7 +22,7 @@ public class DriverManager {
         this(scenarioContext, playwrightFactory, ArtifactPathResolver.defaultInstance());
     }
 
-    public DriverManager(
+    DriverManager(
             ScenarioContext scenarioContext,
             PlaywrightFactory playwrightFactory,
             ArtifactPathResolver artifactPaths) {
@@ -38,6 +40,7 @@ public class DriverManager {
         try {
             browserSession.startTracing(scenarioName);
             scenarioContext.setBrowserSession(browserSession);
+            registerPageListeners(browserSession);
         } catch (RuntimeException e) {
             browserSession.close();
             throw e;
@@ -77,6 +80,24 @@ public class DriverManager {
             scenario.log("Playwright trace: " + tracePath);
         } catch (IOException | RuntimeException e) {
             scenario.log("Unable to attach Playwright failure artifacts: " + e.getMessage());
+        }
+    }
+
+    private void registerPageListeners(BrowserSession browserSession) {
+        browserSession.browserContext().pages().forEach(this::registerPageListeners);
+        browserSession.browserContext().onPage(this::registerPageListeners);
+    }
+
+    private void registerPageListeners(Page page) {
+        page.setDefaultTimeout(Config.timeoutMs());
+        page.onConsoleMessage(this::recordConsoleError);
+        page.onPageError(error -> scenarioContext.recordConsoleError("pageerror: " + error));
+    }
+
+    private void recordConsoleError(ConsoleMessage message) {
+        if ("error".equalsIgnoreCase(message.type())) {
+            scenarioContext.recordConsoleError(
+                    "console." + message.type() + ": " + message.text() + " @ " + message.location());
         }
     }
 }
