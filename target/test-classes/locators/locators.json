@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "locators": {
+    "usernameInput": {
+      "page": "login",
+      "type": "css",
+      "selector": "#user-name",
+      "description": "Username input on the SauceDemo login page"
+    },
+    "passwordInput": {
+      "page": "login",
+      "type": "css",
+      "selector": "#password",
+      "description": "Password input on the SauceDemo login page"
+    },
+    "loginButton": {
+      "page": "login",
+      "type": "css",
+      "selector": "#login-button",
+      "description": "Login button"
+    },
+    "inventoryTitle": {
+      "page": "inventory",
+      "type": "css",
+      "selector": ".title",
+      "description": "Inventory page title after a successful login"
+    }
+  }
+}

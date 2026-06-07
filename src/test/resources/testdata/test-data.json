@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "data": {
+    "validLogin": {
+      "inputs": {
+        "username": "standard_user",
+        "password": "secret_sauce"
+      },
+      "expected": {
+        "inventoryTitle": "Products"
+      }
+    },
+    "urls": {
+      "inputs": {
+        "sauceDemo": "https://www.saucedemo.com"
+      }
+    }
+  }
+}

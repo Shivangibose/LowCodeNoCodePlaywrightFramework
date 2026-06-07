@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-06-07T07:59:28 IST" name="Surefire suite" finished-at="2026-06-07T07:59:28 IST" duration-ms="102">
+    <groups>
+    </groups>
+    <test started-at="2026-06-07T07:59:28 IST" name="Surefire test" finished-at="2026-06-07T07:59:28 IST" duration-ms="102">
+      <class name="com.example.framework.reporting.ArtifactPathResolverTest">
+        <test-method signature="createsSafeFailureArtifactPathsFromScenarioName()[pri:0, instance:com.example.framework.reporting.ArtifactPathResolverTest@58c1c010]" started-at="2026-06-07T07:59:28 IST" name="createsSafeFailureArtifactPathsFromScenarioName" finished-at="2026-06-07T07:59:28 IST" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createsSafeFailureArtifactPathsFromScenarioName -->
+      </class> <!-- com.example.framework.reporting.ArtifactPathResolverTest -->
+      <class name="com.example.framework.data.StepValueResolverTest">
+        <test-method signature="returnsLiteralValuesAndDereferencesTestDataExpressions()[pri:0, instance:com.example.framework.data.StepValueResolverTest@6591f517]" started-at="2026-06-07T07:59:28 IST" name="returnsLiteralValuesAndDereferencesTestDataExpressions" finished-at="2026-06-07T07:59:28 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- returnsLiteralValuesAndDereferencesTestDataExpressions -->
+        <test-method signature="resolvesUrlKeysThroughTestData()[pri:0, instance:com.example.framework.data.StepValueResolverTest@6591f517]" started-at="2026-06-07T07:59:28 IST" name="resolvesUrlKeysThroughTestData" finished-at="2026-06-07T07:59:28 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resolvesUrlKeysThroughTestData -->
+      </class> <!-- com.example.framework.data.StepValueResolverTest -->
+      <class name="com.example.framework.data.ResolverTest">
+        <test-method signature="resolvesLocatorSchemaEntriesToPlaywrightSelectorSyntax()[pri:0, instance:com.example.framework.data.ResolverTest@5a4aa2f2]" started-at="2026-06-07T07:59:28 IST" name="resolvesLocatorSchemaEntriesToPlaywrightSelectorSyntax" finished-at="2026-06-07T07:59:28 IST" duration-ms="74" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resolvesLocatorSchemaEntriesToPlaywrightSelectorSyntax -->
+        <test-method signature="resolvesTestDataByDotSeparatedKey()[pri:0, instance:com.example.framework.data.ResolverTest@5a4aa2f2]" started-at="2026-06-07T07:59:28 IST" name="resolvesTestDataByDotSeparatedKey" finished-at="2026-06-07T07:59:28 IST" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resolvesTestDataByDotSeparatedKey -->
+        <test-method signature="throwsClearExceptionWhenLocatorIsMissing()[pri:0, instance:com.example.framework.data.ResolverTest@5a4aa2f2]" started-at="2026-06-07T07:59:28 IST" name="throwsClearExceptionWhenLocatorIsMissing" finished-at="2026-06-07T07:59:28 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- throwsClearExceptionWhenLocatorIsMissing -->
+        <test-method signature="throwsClearExceptionWhenTestDataKeyIsMissing()[pri:0, instance:com.example.framework.data.ResolverTest@5a4aa2f2]" started-at="2026-06-07T07:59:28 IST" name="throwsClearExceptionWhenTestDataKeyIsMissing" finished-at="2026-06-07T07:59:28 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- throwsClearExceptionWhenTestDataKeyIsMissing -->
+      </class> <!-- com.example.framework.data.ResolverTest -->
+      <class name="com.example.framework.core.ScenarioContextTest">
+        <test-method signature="pageThrowsClearErrorWhenScenarioHasNotStarted()[pri:0, instance:com.example.framework.core.ScenarioContextTest@f0f2775]" started-at="2026-06-07T07:59:28 IST" name="pageThrowsClearErrorWhenScenarioHasNotStarted" finished-at="2026-06-07T07:59:28 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageThrowsClearErrorWhenScenarioHasNotStarted -->
+      </class> <!-- com.example.framework.core.ScenarioContextTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

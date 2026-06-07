@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "locators": {
+    "usernameInput": {
+      "page": "login",
+      "type": "css",
+      "selector": "#user-name",
+      "description": "Username input on the login page"
+    },
+    "loginButtonByRole": {
+      "page": "login",
+      "type": "role",
+      "selector": "button",
+      "name": "Login",
+      "description": "Login button resolved by accessible role"
+    },
+    "cartBadge": {
+      "page": "inventory",
+      "type": "testid",
+      "selector": "shopping-cart-badge",
+      "description": "Cart badge resolved by data-testid"
+    }
+  }
+}
